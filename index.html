@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Translator - break language barriers, one word at a time.">
+  <title>Smart Translator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="globe" aria-hidden="true">🌎</div>
+
+        <div>
+          <h1>Smart Translator</h1>
+          <p>Break language barriers, one word at a time.</p>
+        </div>
+      </div>
+
+      <div class="secure">
+        <span></span>
+        Simple &amp; secure
+      </div>
+    </header>
+
+    <!-- Translator -->
+    <section class="translator">
+
+      <!-- Language selectors -->
+      <div class="language-row">
+
+        <div class="language-field">
+          <select id="sourceLang" aria-label="Source language">
+            <option value="en" selected>🇬🇧 English</option>
+            <option value="pl">🇵🇱 Polish</option>
+            <option value="es">🇪🇸 Spanish</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="it">🇮🇹 Italian</option>
+            <option value="pt">🇵🇹 Portuguese</option>
+            <option value="nl">🇳🇱 Dutch</option>
+            <option value="uk">🇺🇦 Ukrainian</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="tr">🇹🇷 Turkish</option>
+            <option value="ar">🇸🇦 Arabic</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="zh-CN">🇨🇳 Chinese (Simplified)</option>
+            <option value="sw">🇹🇿 Swahili</option>
+          </select>
+        </div>
+
+        <button
+          id="swapBtn"
+          class="swap"
+          type="button"
+          aria-label="Swap languages"
+          title="Swap languages">
+          ⇄
+        </button>
+
+        <div class="language-field">
+          <select id="targetLang" aria-label="Target language">
+            <option value="en">🇬🇧 English</option>
+            <option value="pl">🇵🇱 Polish</option>
+            <option value="es" selected>🇪🇸 Spanish</option>
+            <option value="fr">🇫🇷 French</option>
+            <option value="de">🇩🇪 German</option>
+            <option value="it">🇮🇹 Italian</option>
+            <option value="pt">🇵🇹 Portuguese</option>
+            <option value="nl">🇳🇱 Dutch</option>
+            <option value="uk">🇺🇦 Ukrainian</option>
+            <option value="ru">🇷🇺 Russian</option>
+            <option value="tr">🇹🇷 Turkish</option>
+            <option value="ar">🇸🇦 Arabic</option>
+            <option value="hi">🇮🇳 Hindi</option>
+            <option value="ja">🇯🇵 Japanese</option>
+            <option value="ko">🇰🇷 Korean</option>
+            <option value="zh-CN">🇨🇳 Chinese (Simplified)</option>
+            <option value="sw">🇹🇿 Swahili</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Panel labels -->
+      <div class="text-labels">
+        <label for="sourceText">SOURCE TEXT</label>
+        <label for="resultText">TRANSLATION</label>
+      </div>
+
+      <!-- Translation panels -->
+      <div class="text-grid">
+
+        <!-- Source text -->
+        <section class="text-box">
+          <textarea
+            id="sourceText"
+            maxlength="1000"
+            placeholder="Enter text to translate..."
+            aria-label="Source text"
+            spellcheck="true">Hello, how are you?</textarea>
+
+          <div class="box-footer">
+            <span id="charCount">18 / 1000 characters</span>
+
+            <div class="left-actions">
+              <button
+                id="speakSource"
+                class="utility-btn"
+                type="button"
+                aria-label="Listen to source text"
+                title="Listen to source text">🔊</button>
+
+              <button
+                id="clearBtn"
+                class="utility-btn"
+                type="button"
+                title="Clear text">↻ &nbsp; Clear</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Translated text -->
+        <section class="text-box result-box">
+          <div
+            id="resultText"
+            class="result-text"
+            aria-live="polite">Your translation will appear here.</div>
+
+          <div class="box-footer">
+            <span id="resultStatus" class="result-status">
+              <span class="status-dot"></span>
+              Ready to translate
+            </span>
+
+            <div class="left-actions">
+              <button
+                id="speakResult"
+                class="utility-btn"
+                type="button"
+                aria-label="Listen to translation"
+                title="Listen to translation">🔊</button>
+
+              <button
+                id="copyBtn"
+                class="utility-btn"
+                type="button"
+                title="Copy translation">▢ &nbsp; Copy</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Translate button -->
+      <button id="translateBtn" class="translate-btn" type="button">
+        <span class="sparkle">✣</span>
+        <span id="translateLabel">Translate</span>
+      </button>
+
+      <p class="helper">
+        Translate between languages in seconds.
+      </p>
+
+      <!-- Privacy notice -->
+      <p class="privacy">
+        <span aria-hidden="true">♙</span>
+        Your text is sent to an external translation service when you translate.<br>
+        Avoid entering sensitive or confidential information.
+      </p>
+
+      <!-- Status messages -->
+      <p id="notice" class="notice" role="status" aria-live="polite"></p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Smart Translator</span>
+      <span>♡ &nbsp; Made for easier communication</span>
+    </footer>
+
+  </main>
+
+  <!-- JavaScript functionality -->
+  <script src="script.js"></script>
+
+</body>
+</html>
